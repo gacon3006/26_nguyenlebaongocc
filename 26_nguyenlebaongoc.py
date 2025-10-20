@@ -1,13 +1,15 @@
-# Tính năng 2: In danh sách sinh viên
-def print_student_list():
+# Tính năng 3: Tìm kiếm sinh viên
+def search_student(search_name):
     """
-    YÊU CẦU 2: In danh sách sinh viên.
+    YÊU CẦU 3: Tìm sinh viên theo tên.
     """
-    print("--- DANH SACH SINH VIEN ---")
-    if not student_list:
-        print("Danh sach trong.")
+    print("--- KET QUA TIM KIEM ---")
+    search_name_lower = search_name.lower()
+    results = [s for s in student_list if search_name_lower in s['name'].lower()]
+    if not results:
+        print("Khong tim thay sinh vien nao.")
     else:
-        for s in student_list:
+        for s in results:
             print(f" - Ten: {s['name']}, Nam sinh: {s['year_of_birth']}, Dia chi: {s['address']}")
 
 # --- Phần kiểm tra ---
@@ -19,5 +21,8 @@ if __name__ == "__main__":
     add_student("Tran Thi Binh", 2002, "Quang Nam")
     add_student("Le Van Hung", 2003, "Hue")
 
-    print("\n2. In danh sach sinh vien:")
-    print_student_list()
+    print("\n3. Tim kiem sinh vien theo ten 'an':")
+    search_student("an")
+
+    print("\nTim kiem sinh vien theo ten 'Dung':")
+    search_student("Dung")
